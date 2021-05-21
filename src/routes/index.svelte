@@ -8,6 +8,9 @@
 		const pages = page.query.get('page') ?? '';
 		let params ='';
 
+		console.log(category)
+		console.log(pages)
+
 		if (pages !== '' && category !== '') params = `?page=${pages}&category=${category}`;
 		else if (pages === '' && category !== '') params = `?&category=${category}`;
 		else if (pages !== '' && category === '') params = `?page=${pages}`;
