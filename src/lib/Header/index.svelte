@@ -3,12 +3,8 @@
 </script>
 
 <div class="header">
-	<p class="title">
-		<li class:active={$page.path === '/'}><a sveltekit:prefetch href="/">takurinton.com</a></li>
-	</p>
-	<p class="page">
-		<li class:active={$page.path === '/about'}><a sveltekit:prefetch href="/about">About</a></li>
-	</p>
+		<p class="title" class:active={$page.path === '/'}><a sveltekit:prefetch href="/">takurinton.com</a></p>
+		<p class="page" class:active={$page.path === '/about'}><a sveltekit:prefetch href="/about">About</a></p>
 </div>
 
 <style lang="scss">
