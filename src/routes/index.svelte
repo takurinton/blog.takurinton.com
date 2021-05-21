@@ -1,7 +1,6 @@
 <script context="module" lang="ts">
 	import { enhance } from '$lib/form';
 	import type { Load } from '@sveltejs/kit';
-
 	export const prerender = true;
 
 	export const load: Load = async ({ fetch }) => {
@@ -54,6 +53,15 @@
 
 <svelte:head>
 	<title>たくりんとんのブログ</title>
+	<meta property="og:url" content="https://blog.takurinton.com/" />
+    <meta property="og:title" content="Home | たくりんとんのブログ" /> 
+    <meta property="og:description" content="たくりんとんのブログです" /> 
+    <meta property="og:image" content="https://www.takurinton.com/me.jpeg" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://blog.takurinton.com/" />
+    <meta property="twitter:title" content="Home | たくりんとんのブログ" /> 
+    <meta property="twitter:description" content="たくりんとんのブログです" /> 
+    <meta property="twitter:image" content="https://www.takurinton.com/me.jpeg" />
 </svelte:head>
 
 <section>
