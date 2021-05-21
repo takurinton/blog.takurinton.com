@@ -76,6 +76,10 @@
 <section>
 	<h1>たくりんとんのブログ</h1>
 
+	{#if posts.category !== null}
+		<h2>{posts.category} の記事一覧</h2>
+	{/if}
+
 	{#each posts.results as post}
 	<div class="box">
 		<a href="/post/{ post.id }">
