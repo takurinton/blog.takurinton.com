@@ -65,14 +65,56 @@
 </svelte:head>
 
 <section>
-	hello world
+	<h1>home</h1>
 
 	{#each posts.results as post}
-		<p><a href="/post/{post.id}">{post.title}</a></p>
+	<div class="box">
+		<a href="/post/{ post.id }">
+			<a>
+			<div class="content">
+				<h1>{post.title}</h1>
+				<a href="/?category={ post.category }">
+					<a class="category">
+						{ post.category }
+					</a>
+				</a>
+				<p class="pubDate">{ post.pub_date.slice(0, 10) }</p>
+				<p>{ post.contents }</p>
+			</div>
+			</a>
+		</a>
+		<hr />
+	</div>
 	{/each}
 </section>
 
 <style lang="scss">
+
+	$theme_main: #7fd5ea;
+	$theme_text: #222222;
+	$theme_line: #a8a8a8;
+	$theme_subtext: #707070;
+
+	$button_color: #FF69B4;
+
+	$pink_kawaii: #FF69B4;
+	$theme_back: #7fd5ea41;
+
+
+	$h1: 4rem;
+	$h2: 3.2rem;
+	$h3: 2.4rem;
+	$h4: 1.6rem;
+	$h5: 1.2rem;
+	$p: 1.2rem;
+
+	$thin: 100;
+	$thick: 800;
+	$nomal: 500;
+
+	$tablet: 800px; 
+	$phone: 500px; 
+
 	section {
 		display: flex;
 		flex-direction: column;
@@ -81,22 +123,58 @@
 		flex: 1;
 	}
 
-	h1 {
-		width: 100%;
-	}
+	.box {
+    margin: 0 auto; 
+    padding: 20px 5% 10px; 
+    // box-shadow: 4px 4px 8px gray;
+    width: 80%;
+    text-align: left;
+    line-height: 2;
+    // background: linear-gradient(90deg, $theme_main 5%, white 5%);
 
-	.welcome {
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
+    h1 {
+        font-size: $h3;
+        color: $theme_text;
+        margin-bottom: 0;
+        &:hover {
+            color: $pink_kawaii;
+        }
+    }
 
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
-	}
+    @media (max-width: 1024px) {
+        width: auto;
+    }
+
+    img {
+        width: 80%;
+    }
+
+    a {
+        font-size: $h5; 
+        color: $theme_text; 
+        font-weight: $thick;
+        text-decoration: none;
+    }
+
+    .category {
+        padding: 3px 8px 4px;
+        background: $theme_subtext;
+        color: white; 
+        border-radius: 2px;
+        &:hover {
+            background: $pink_kawaii;
+        }
+    }
+
+    p {
+        font-size: $p; 
+        font-weight: $nomal;
+        color: $theme_text;
+    }
+
+    .pubDate {
+        margin-top: 10px;
+        font-weight: $nomal;
+    }
+}
 </style>
