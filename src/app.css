@@ -8,7 +8,7 @@
 	--primary-color: #b9c6d2;
 	--secondary-color: #d0dde9;
 	--tertiary-color: #edf0f8;
-	--accent-color: #ff3e00;
+	--accent-color: #FF69B4;
 	--heading-color: rgba(0, 0, 0, 0.7);
 	--text-color: #444444;
 	--background-without-opacity: rgba(255, 255, 255, 0.7);
@@ -53,7 +53,7 @@ body::before {
 h1,
 h2,
 p {
-	font-weight: 400;
+	font-weight: 500;
 	color: var(--heading-color);
 }
 
@@ -109,4 +109,8 @@ button {
 
 button:focus:not(:focus-visible) {
 	outline: none;
+}
+
+li {
+	margin: 10px 0;
 }
