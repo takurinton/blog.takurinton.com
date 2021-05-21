@@ -74,7 +74,7 @@
 </svelte:head>
 
 <section>
-	<h1>home</h1>
+	<h1>たくりんとんのブログ</h1>
 
 	{#each posts.results as post}
 	<div class="box">
@@ -96,7 +96,23 @@
 	</div>
 	{/each}
 
-	<a href="?page=2&category=Django">next</a>
+	<div class="pagination">
+		{#if posts.category !== null}
+			{#if posts.next !== null}
+				<a class="next-button" href="/?page={posts.next}&category={posts.category}">むかし</a>
+			{/if}
+			{#if posts.previous !== null}
+				<a class="prev-button" href="/?page={posts.previous}&category={posts.category}">さいきん</a>
+			{/if}
+		{:else}
+			{#if posts.next !== null}
+					<a class="next-button" href="/?page={posts.next}">むかし</a>
+			{/if}
+			{#if posts.previous !== null}
+				<a class="prev-button" href="/?page={posts.previous}">さいきん</a>
+			{/if}
+		{/if}
+	</div>
 </section>
 
 <style lang="scss">
@@ -187,5 +203,42 @@
         margin-top: 10px;
         font-weight: $nomal;
     }
+}
+
+.pagination {
+    margin: 20px auto 10%; 
+	position: relative; 
+	width: 80%;
+    @media (max-width: 800px) {
+        .pagination {
+            width: 70%;
+        }
+    }
+    @media (max-width: 500) {
+        .pagination {
+            width: 90%;
+        }
+    }
+}
+
+.next-button, .prev-button {
+    padding: 5px 10px 7px;
+    position: absolute; 
+    font-weight: $thick;
+    text-decoration: none;
+    font-size: $h4;
+    font-weight: $thick;
+    background: $theme_subtext;
+    color: white;
+    border-radius: 4px;
+    &:hover {
+        background: $pink_kawaii;
+    }
+}
+.next-button {
+    right: 0;
+}
+.prev-button {
+    left: 0;
 }
 </style>
