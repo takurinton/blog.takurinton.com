@@ -28,6 +28,8 @@
     "@fontsource/fira-mono": "^4.2.2",
     "@lukeed/uuid": "^2.0.0",
     "cookie": "^0.4.1",
+    "highlight.js": "^10.7.2",
+    "marked": "^2.0.4",
     "node-sass": "^6.0.0"
   }
 }

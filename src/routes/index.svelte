@@ -72,7 +72,7 @@
 	{/each}
 </section>
 
-<style>
+<style lang="scss">
 	section {
 		display: flex;
 		flex-direction: column;
