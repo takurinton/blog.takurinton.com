@@ -6,17 +6,13 @@
 	export const load: Load = async ({ page, fetch }) => {
 		const category = page.query.get('category') ?? '';
 		const pages = page.query.get('page') ?? '';
-		let params ='';
-
-		console.log(category)
-		console.log(pages)
+		var params = '';
 
 		if (pages !== '' && category !== '') params = `?page=${pages}&category=${category}`;
 		else if (pages === '' && category !== '') params = `?&category=${category}`;
 		else if (pages !== '' && category === '') params = `?page=${pages}`;
 
 		const res = await fetch(`https://api.takurinton.com/blog/v1/${params}`);
-
 
 		if (res.ok) {
 			const posts = await res.json();
