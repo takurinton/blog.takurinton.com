@@ -81,20 +81,17 @@
 
 	{#each posts.results as post}
 	<div class="box">
-		<a href="/post/{ post.id }">
-			<a>
 			<div class="content">
-				<h1>{post.title}</h1>
-				<a href="/?category={ post.category }">
-					<a class="category">
-						{ post.category }
-					</a>
+				<a href="/post/{ post.id }">
+					<h1>{post.title}</h1>
+				</a>
+				<a class="category" href="/?category={ post.category }">
+					{ post.category }
 				</a>
 				<p class="pubDate">{ post.pub_date.slice(0, 10) }</p>
 				<p>{ post.contents }</p>
 			</div>
-			</a>
-		</a>
+		
 		<hr />
 	</div>
 	{/each}
