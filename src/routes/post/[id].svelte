@@ -77,7 +77,7 @@
 		return {
 			error: new Error(message)
 		};
-	};
+    };
 </script>
 
 <script lang="ts">

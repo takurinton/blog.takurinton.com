@@ -70,7 +70,7 @@
     <meta property="twitter:url" content="https://blog.takurinton.com/" />
     <meta property="twitter:title" content="Home | たくりんとんのブログ" /> 
     <meta property="twitter:description" content="たくりんとんのブログです" /> 
-    <meta property="twitter:image" content="https://www.takurinton.com/me.jpeg" />
+	<meta property="twitter:image" content="https://www.takurinton.com/me.jpeg" />
 </svelte:head>
 
 <section>
