@@ -3,29 +3,40 @@
 :root {
 	font-family: Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
 		Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-	--font-mono: "SFMono-Regular","Consolas","Liberation Mono","Menlo",monospace,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-	--pure-white: #ffffff;
-	--primary-color: #b9c6d2;
-	--secondary-color: #d0dde9;
-	--tertiary-color: #edf0f8;
-	--accent-color: #FF69B4;
-	--heading-color: rgba(0, 0, 0, 0.7);
-	--text-color: #444444;
-	--background-without-opacity: rgba(255, 255, 255, 0.7);
-	--column-width: 42rem;
-	--column-margin-top: 4rem;
 }
+
+$font_mono: "SFMono-Regular","Consolas","Liberation Mono","Menlo",monospace,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+
+$primary: #FF69B4;
+$secondary: #7fd5ea;
+$main-text: #222222;
+$sub-text: #707070;
+$main-line: #a8a8a8;
+
+$theme-back: #7fd5ea41;
+$pre: #2c2d3a;
+$heading: rgba(0, 0, 0, 0.7);
+
+$h1: 4rem;
+$h2: 3.2rem;
+$h3: 2.4rem;
+$h4: 1.6rem;
+$h5: 1.2rem;
+$p: 1.2rem;
+
+$thin: 100;
+$thick: 800;
+$nomal: 500;
+
+$tablet: 800px; 
+$phone: 500px; 
+
+$column-width: 42rem;
+$column-margin_top: 4rem;
 
 body {
 	min-height: 100vh;
 	margin: 0;
-	/* background-color: var(--primary-color); */
-	/* background: linear-gradient(
-		180deg,
-		var(--primary-color) 0%,
-		var(--secondary-color) 10.45%,
-		var(--tertiary-color) 41.35%
-	); */
 }
 
 body::before {
@@ -38,7 +49,7 @@ body::before {
 	z-index: -1;
 	background: radial-gradient(
 		50% 50% at 50% 50%,
-		var(--pure-white) 0%,
+		white 0%,
 		rgba(255, 255, 255, 0) 100%
 	);
 	opacity: 0.05;
@@ -54,7 +65,7 @@ h1,
 h2,
 p {
 	font-weight: 500;
-	color: var(--heading-color);
+	color: $heading;
 }
 
 p {
@@ -62,7 +73,7 @@ p {
 }
 
 a {
-	color: var(--accent-color);
+	color: $primary;
 	text-decoration: none;
 }
 
@@ -84,7 +95,7 @@ pre {
 	font-size: 16px;
 	padding: 10px;
 	overflow: auto;
-	background-color: #2c2d3a;
+	background-color: $pre;
 	border-radius: 5px;
 	box-shadow: 2px 2px 6px rgb(255 255 255 / 25%);
 }
@@ -92,13 +103,13 @@ pre {
 pre > code {
 	font-weight: 500;
 	color: white;
-	font-family: var(--font-mono);
+	font-family: $font_mono;
 }
 
 code { 
 	font-weight: 500;
 	color: black;
-	font-family: var(--font-mono);
+	font-family: $font_mono;
 }
 
 input,

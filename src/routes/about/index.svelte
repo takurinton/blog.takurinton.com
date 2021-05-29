@@ -1,5 +1,7 @@
 <script context="module">
 	import { browser, dev } from '$app/env';
+	import '../../app.scss';
+
 	export const hydrate = dev;
 	export const router = browser;
 	export const prerender = true;
@@ -23,9 +25,11 @@
 </div>
 
 <style lang="scss">
+	@import '../../app.scss';
+	
 	.content {
 		width: 100%;
-		max-width: var(--column-width);
-		margin: var(--column-margin-top) auto 0 auto;
+		max-width: $column_width;
+		margin: $column_margin_top auto 0 auto;
 	}
 </style>
