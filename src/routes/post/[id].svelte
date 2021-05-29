@@ -117,125 +117,102 @@
 </section>
 
 <style lang="scss">
-$theme_main: #7fd5ea;
-$theme_text: #222222;
-$theme_line: #a8a8a8;
-$theme_subtext: #707070;
+    @import '../../app.scss';
 
-$button_color: #FF69B4;
-
-$pink_kawaii: #FF69B4;
-$theme_back: #7fd5ea41;
-
-
-$h1: 4rem;
-$h2: 3.2rem;
-$h3: 2.4rem;
-$h4: 1.6rem;
-$h5: 1.2rem;
-$p: 1.2rem;
-
-$thin: 100;
-$thick: 800;
-$nomal: 500;
-
-$tablet: 800px; 
-$phone: 500px; 
-
-.title {
-    text-align: center;
-    font-size: $h3;
-    font-weight: 800;
-}
-
-.main {
-    margin: 3% auto 5%;
-    text-align: left;
-
-    h1 {
-        margin: 4% 0 1% 1%; 
-        border-bottom: solid 2px $pink_kawaii; 
-        width: 100%
-    }
-    h2 {
-        border-bottom: solid 1.6px $pink_kawaii; 
-    }
-    h2, .h3, .h4, .h5, .h6 {
-        margin: 10px 0 2px 2%;
-    }
-    p {
-        line-height: 2.4; 
-        margin-left: 4%;
-        font-weight: 600;
-    }
-    
-    a {
-        text-decoration: none;
-        color: $pink_kawaii;
-    }
-    
-    
-    ul {
-        line-height: 2;
-        margin-left: 2%;
-        margin-bottom: 1%;
-        font-weight: 600;
+    .title {
+        text-align: center;
+        font-size: $h3;
+        font-weight: 800;
     }
 
-    img {
-        max-width: 80vw;
-    }
+    .main {
+        margin: 3% auto 5%;
+        text-align: left;
 
-    table {
-        margin-left: 4%;
-        width: auto;
-    }
-    
-    table td {
-        word-break : break-all;
-    }
-    
-    .content-img { 
-        margin: 30px 0 30px 4%;  
-    }
-    
-    pre {
-        padding: 10px;
-        margin: 10px 0 10px 4%;
-        overflow: auto;
-        background-color: #2c2d3a;
-        border-radius: 5px;
-    }
-    pre > code {
-        font-weight: 500;
-        color: white;
-        font-family:"SFMono-Regular","Consolas","Liberation Mono","Menlo",monospace,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-    }
-
-    code {
-        font-weight: 500;
-        color: black;
-        font-family:"SFMono-Regular","Consolas","Liberation Mono","Menlo",monospace,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-    }
-    
-    @media (max-width: 1024px) {
-        width: 90%;
-    }
-
-    @media screen and (max-width: 500px) {
-        .h1 {
-            font-size: 1.6rem
+        h1 {
+            margin: 4% 0 1% 1%; 
+            border-bottom: solid 2px $pink_kawaii; 
+            width: 100%
         }
-        .h2 {
-            font-size: 1.3rem
+        h2 {
+            border-bottom: solid 1.6px $pink_kawaii; 
         }
-        img { 
-            width: 80%;
+        h2, .h3, .h4, .h5, .h6 {
+            margin: 10px 0 2px 2%;
         }
-
+        p {
+            line-height: 2.4; 
+            margin-left: 4%;
+            font-weight: 600;
+        }
+        
+        a {
+            text-decoration: none;
+            color: $pink_kawaii;
+        }
+        
+        
         ul {
-            margin-left: 3%;
+            line-height: 2;
+            margin-left: 2%;
+            margin-bottom: 1%;
+            font-weight: 600;
+        }
+
+        img {
+            max-width: 80vw;
+        }
+
+        table {
+            margin-left: 4%;
+            width: auto;
+        }
+        
+        table td {
+            word-break : break-all;
+        }
+        
+        .content-img { 
+            margin: 30px 0 30px 4%;  
+        }
+        
+        pre {
+            padding: 10px;
+            margin: 10px 0 10px 4%;
+            overflow: auto;
+            background-color: #2c2d3a;
+            border-radius: 5px;
+        }
+        pre > code {
+            font-weight: 500;
+            color: white;
+            font-family:"SFMono-Regular","Consolas","Liberation Mono","Menlo",monospace,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+        }
+
+        code {
+            font-weight: 500;
+            color: black;
+            font-family:"SFMono-Regular","Consolas","Liberation Mono","Menlo",monospace,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+        }
+        
+        @media (max-width: 1024px) {
+            width: 90%;
+        }
+
+        @media screen and (max-width: 500px) {
+            .h1 {
+                font-size: 1.6rem
+            }
+            .h2 {
+                font-size: 1.3rem
+            }
+            img { 
+                width: 80%;
+            }
+
+            ul {
+                margin-left: 3%;
+            }
         }
     }
-}
 </style>

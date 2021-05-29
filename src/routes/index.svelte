@@ -1,6 +1,7 @@
 <script context="module" lang="ts">
 	import { enhance } from '$lib/form';
 	import type { Load } from '@sveltejs/kit';
+
 	export const prerender = true;
 
 	export const load: Load = async ({ page, fetch }) => {
@@ -57,7 +58,6 @@
 	}
 
 	export let posts: Posts;
-
 </script>
 
 <svelte:head>
@@ -117,31 +117,7 @@
 </section>
 
 <style lang="scss">
-
-	$theme_main: #7fd5ea;
-	$theme_text: #222222;
-	$theme_line: #a8a8a8;
-	$theme_subtext: #707070;
-
-	$button_color: #FF69B4;
-
-	$pink_kawaii: #FF69B4;
-	$theme_back: #7fd5ea41;
-
-
-	$h1: 4rem;
-	$h2: 3.2rem;
-	$h3: 2.4rem;
-	$h4: 1.6rem;
-	$h5: 1.2rem;
-	$p: 1.2rem;
-
-	$thin: 100;
-	$thick: 800;
-	$nomal: 500;
-
-	$tablet: 800px; 
-	$phone: 500px; 
+	@import '../app.scss';
 
 	section {
 		display: flex;
@@ -152,94 +128,92 @@
 	}
 
 	.box {
-    margin: 0 auto; 
-    padding: 20px 5% 10px; 
-    // box-shadow: 4px 4px 8px gray;
-    width: 80%;
-    text-align: left;
-    line-height: 2;
-    // background: linear-gradient(90deg, $theme_main 5%, white 5%);
+		margin: 0 auto; 
+		padding: 20px 5% 10px; 
+		width: 80%;
+		text-align: left;
+		line-height: 2;
 
-    h1 {
-        font-size: $h3;
-        color: $theme_text;
-        margin-bottom: 0;
-        &:hover {
-            color: $pink_kawaii;
-        }
-    }
+		h1 {
+			font-size: $h3;
+			color: $theme_text;
+			margin-bottom: 0;
+			&:hover {
+				color: $pink_kawaii;
+			}
+		}
 
-    @media (max-width: 1024px) {
-        width: auto;
-    }
+		@media (max-width: 1024px) {
+			width: auto;
+		}
 
-    img {
-        width: 80%;
-    }
+		img {
+			width: 80%;
+		}
 
-    a {
-        font-size: $h5; 
-        color: $theme_text; 
-        font-weight: $thick;
-        text-decoration: none;
-    }
+		a {
+			font-size: $h5; 
+			color: $theme_text; 
+			font-weight: $thick;
+			text-decoration: none;
+		}
 
-    .category {
-        padding: 3px 8px 4px;
-        background: $theme_subtext;
-        color: white; 
-        border-radius: 2px;
-        &:hover {
-            background: $pink_kawaii;
-        }
-    }
+		.category {
+			padding: 3px 8px 4px;
+			background: $theme_subtext;
+			color: white; 
+			border-radius: 2px;
+			&:hover {
+				background: $pink_kawaii;
+			}
+		}
 
-    p {
-        font-size: $p; 
-        font-weight: $nomal;
-        color: $theme_text;
-    }
+		p {
+			font-size: $p; 
+			font-weight: $nomal;
+			color: $theme_text;
+		}
 
-    .pubDate {
-        margin-top: 10px;
-        font-weight: $nomal;
-    }
-}
+		.pubDate {
+			margin-top: 10px;
+			font-weight: $nomal;
+		}
 
-.pagination {
-    margin: 20px auto 10%; 
-	position: relative; 
-	width: 80%;
-    @media (max-width: 800px) {
-        .pagination {
-            width: 70%;
-        }
-    }
-    @media (max-width: 500) {
-        .pagination {
-            width: 90%;
-        }
-    }
-}
+		.pagination {
+			margin: 20px auto 10%; 
+			position: relative; 
+			width: 80%;
+			@media (max-width: 800px) {
+				.pagination {
+					width: 70%;
+				}
+			}
+			@media (max-width: 500) {
+				.pagination {
+					width: 90%;
+				}
+			}
+		}
+	}
 
-.next-button, .prev-button {
-    padding: 5px 10px 7px;
-    position: absolute; 
-    font-weight: $thick;
-    text-decoration: none;
-    font-size: $h4;
-    font-weight: $thick;
-    background: $theme_subtext;
-    color: white;
-    border-radius: 4px;
-    &:hover {
-        background: $pink_kawaii;
-    }
-}
-.next-button {
-    right: 0;
-}
-.prev-button {
-    left: 0;
-}
+	.next-button, .prev-button {
+		padding: 5px 10px 7px;
+		position: absolute; 
+		font-weight: $thick;
+		text-decoration: none;
+		font-size: $h4;
+		font-weight: $thick;
+		background: $theme_subtext;
+		color: white;
+		border-radius: 4px;
+		&:hover {
+			background: $pink_kawaii;
+		}
+	}
+	.next-button {
+		right: 0;
+	}
+	.prev-button {
+		left: 0;
+	}
 </style>
