@@ -182,6 +182,10 @@ $phone: 500px;
         font-weight: 600;
     }
 
+    img {
+        max-width: 80vw;
+    }
+
     table {
         margin-left: 4%;
         width: auto;
