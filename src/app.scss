@@ -7,13 +7,13 @@
 
 $font_mono: "SFMono-Regular","Consolas","Liberation Mono","Menlo",monospace,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
 
-$theme_main: #7fd5ea;
-$theme_text: #222222;
-$theme_line: #a8a8a8;
-$theme_subtext: #707070;
-$button_color: #FF69B4;
-$pink_kawaii: #FF69B4;
-$theme_back: #7fd5ea41;
+$primary: #FF69B4;
+$secondary: #7fd5ea;
+$main-text: #222222;
+$sub-text: #707070;
+$main-line: #a8a8a8;
+
+$theme-back: #7fd5ea41;
 $pre: #2c2d3a;
 $heading: rgba(0, 0, 0, 0.7);
 
@@ -31,8 +31,8 @@ $nomal: 500;
 $tablet: 800px; 
 $phone: 500px; 
 
-$column_width: 42rem;
-$column_margin_top: 4rem;
+$column-width: 42rem;
+$column-margin_top: 4rem;
 
 body {
 	min-height: 100vh;
@@ -73,7 +73,7 @@ p {
 }
 
 a {
-	color: $pink_kawaii;
+	color: $primary;
 	text-decoration: none;
 }
 

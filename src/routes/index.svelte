@@ -136,10 +136,10 @@
 
 		h1 {
 			font-size: $h3;
-			color: $theme_text;
+			color: $main-text;
 			margin-bottom: 0;
 			&:hover {
-				color: $pink_kawaii;
+				color: $primary;
 			}
 		}
 
@@ -153,25 +153,25 @@
 
 		a {
 			font-size: $h5; 
-			color: $theme_text; 
+			color: $main-text; 
 			font-weight: $thick;
 			text-decoration: none;
 		}
 
 		.category {
 			padding: 3px 8px 4px;
-			background: $theme_subtext;
+			background: $sub-text;
 			color: white; 
 			border-radius: 2px;
 			&:hover {
-				background: $pink_kawaii;
+				background: $primary;
 			}
 		}
 
 		p {
 			font-size: $p; 
 			font-weight: $nomal;
-			color: $theme_text;
+			color: $main-text;
 		}
 
 		.pubDate {
@@ -203,17 +203,17 @@
 		text-decoration: none;
 		font-size: $h4;
 		font-weight: $thick;
-		background: $theme_subtext;
+		background: $sub-text;
 		color: white;
 		border-radius: 4px;
 		&:hover {
-			background: $pink_kawaii;
+			background: $primary;
 		}
 	}
 	.next-button {
-		right: 0;
+		right: 10%;
 	}
 	.prev-button {
-		left: 0;
+		left: 10%;
 	}
 </style>

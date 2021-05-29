@@ -82,11 +82,11 @@
 
         h1 {
             margin: 4% 0 1% 1%; 
-            border-bottom: solid 2px $pink_kawaii; 
+            border-bottom: solid 2px $primary; 
             width: 100%
         }
         h2 {
-            border-bottom: solid 1.6px $pink_kawaii; 
+            border-bottom: solid 1.6px $primary; 
         }
         h2, .h3, .h4, .h5, .h6 {
             margin: 10px 0 2px 2%;
@@ -99,7 +99,7 @@
         
         a {
             text-decoration: none;
-            color: $pink_kawaii;
+            color: $primary;
         }
         
         

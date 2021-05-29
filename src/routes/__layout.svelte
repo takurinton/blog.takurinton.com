@@ -17,8 +17,9 @@
 		padding: 1rem;
 		width: 100%;
 		max-width: 1024px;
-		margin: 0 auto;
+		margin: 0 auto 100px;
 		box-sizing: border-box;
+		position: relative;
 	}
 
 	footer {
