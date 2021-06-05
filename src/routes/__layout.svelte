@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Header from '$lib/Header/index.svelte';
-	import '../app.css';
+	import '../app.scss';
 </script>
 
 <Header />
@@ -9,13 +9,7 @@
 	<slot />
 </main>
 
-<!-- <footer>
-	<p>
-		コピーライト的な何かを入れたいけど入れたところで何にもならねえしくそ
-	</p>
-</footer> -->
-
-<style>
+<style lang="scss">
 	main {
 		flex: 1;
 		display: flex;
@@ -23,8 +17,9 @@
 		padding: 1rem;
 		width: 100%;
 		max-width: 1024px;
-		margin: 0 auto;
+		margin: 0 auto 100px;
 		box-sizing: border-box;
+		position: relative;
 	}
 
 	footer {
