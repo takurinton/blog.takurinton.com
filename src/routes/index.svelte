@@ -7,7 +7,7 @@
 	export const load: Load = async ({ page, fetch }) => {
 		const category = page.query.get('category') ?? '';
 		const pages = page.query.get('page') ?? '';
-		var params = '';
+		let params = '';
 
 		if (pages !== '' && category !== '') params = `?page=${pages}&category=${category}`;
 		else if (pages === '' && category !== '') params = `?&category=${category}`;
@@ -35,26 +35,26 @@
 	import { flip } from 'svelte/animate';
 
 	type Posts = {
-		next: string | null, 
-		previous: string | null, 
-		total: number, 
-		category: any,
-		current: number, 
-		results: Post[], 
-		page_size: string, 
-		first: string, 
-		last: string
-	}
+		next: string | null;
+		previous: string | null;
+		total: number;
+		category: any;
+		current: number;
+		results: Post[];
+		page_size: string;
+		first: string;
+		last: string;
+	};
 
 	type Post = {
-		id: number,
-		title: string, 
-		category: string,
-		contents: string, 
-		contents_image_url: string,
-		pub_date: string,
-		comment: CommentProps[]
-	}
+		id: number;
+		title: string;
+		category: string;
+		contents: string;
+		contents_image_url: string;
+		pub_date: string;
+		comment: CommentProps[];
+	};
 
 	export let posts: Posts;
 </script>
@@ -62,13 +62,13 @@
 <svelte:head>
 	<title>たくりんとんのブログ</title>
 	<meta property="og:url" content="https://blog.takurinton.com/" />
-    <meta property="og:title" content="Home | たくりんとんのブログ" /> 
-    <meta property="og:description" content="たくりんとんのブログです" /> 
-    <meta property="og:image" content="https://www.takurinton.com/me.jpeg" />
-    <meta name="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://blog.takurinton.com/" />
-    <meta property="twitter:title" content="Home | たくりんとんのブログ" /> 
-    <meta property="twitter:description" content="たくりんとんのブログです" /> 
+	<meta property="og:title" content="Home | たくりんとんのブログ" />
+	<meta property="og:description" content="たくりんとんのブログです" />
+	<meta property="og:image" content="https://www.takurinton.com/me.jpeg" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta property="twitter:url" content="https://blog.takurinton.com/" />
+	<meta property="twitter:title" content="Home | たくりんとんのブログ" />
+	<meta property="twitter:description" content="たくりんとんのブログです" />
 	<meta property="twitter:image" content="https://www.takurinton.com/me.jpeg" />
 </svelte:head>
 
@@ -80,20 +80,20 @@
 	{/if}
 
 	{#each posts.results as post}
-	<div class="box">
+		<div class="box">
 			<div class="content">
-				<a href="/post/{ post.id }">
+				<a href="/post/{post.id}">
 					<h1>{post.title}</h1>
 				</a>
-				<a class="category" href="/?category={ post.category }">
-					{ post.category }
+				<a class="category" href="/?category={post.category}">
+					{post.category}
 				</a>
-				<p class="pubDate">{ post.pub_date.slice(0, 10) }</p>
-				<p>{ post.contents }</p>
+				<p class="pubDate">{post.pub_date.slice(0, 10)}</p>
+				<p>{post.contents}</p>
 			</div>
-		
-		<hr />
-	</div>
+
+			<hr />
+		</div>
 	{/each}
 
 	<div class="pagination">
@@ -106,7 +106,7 @@
 			{/if}
 		{:else}
 			{#if posts.next !== null}
-					<a class="next-button" href="/?page={posts.next}">むかし</a>
+				<a class="next-button" href="/?page={posts.next}">むかし</a>
 			{/if}
 			{#if posts.previous !== null}
 				<a class="prev-button" href="/?page={posts.previous}">さいきん</a>
@@ -127,8 +127,8 @@
 	}
 
 	.box {
-		margin: 0 auto; 
-		padding: 20px 5% 10px; 
+		margin: 0 auto;
+		padding: 20px 5% 10px;
 		width: 80%;
 		text-align: left;
 		line-height: 2;
@@ -151,8 +151,8 @@
 		}
 
 		a {
-			font-size: $h5; 
-			color: $main-text; 
+			font-size: $h5;
+			color: $main-text;
 			font-weight: $thick;
 			text-decoration: none;
 		}
@@ -160,7 +160,7 @@
 		.category {
 			padding: 3px 8px 4px;
 			background: $sub-text;
-			color: white; 
+			color: white;
 			border-radius: 2px;
 			&:hover {
 				background: $primary;
@@ -168,7 +168,7 @@
 		}
 
 		p {
-			font-size: $p; 
+			font-size: $p;
 			font-weight: $nomal;
 			color: $main-text;
 		}
@@ -179,8 +179,8 @@
 		}
 
 		.pagination {
-			margin: 20px auto 10%; 
-			position: relative; 
+			margin: 20px auto 10%;
+			position: relative;
 			width: 80%;
 			@media (max-width: 800px) {
 				.pagination {
@@ -195,9 +195,10 @@
 		}
 	}
 
-	.next-button, .prev-button {
+	.next-button,
+	.prev-button {
 		padding: 5px 10px 7px;
-		position: absolute; 
+		position: absolute;
 		font-weight: $thick;
 		text-decoration: none;
 		font-size: $h4;

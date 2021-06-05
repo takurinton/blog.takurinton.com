@@ -5,9 +5,10 @@
 		Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-$font_mono: "SFMono-Regular","Consolas","Liberation Mono","Menlo",monospace,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+$font_mono: 'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo', monospace, 'Apple Color Emoji',
+	'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
-$primary: #FF69B4;
+$primary: #ff69b4;
 $secondary: #7fd5ea;
 $main-text: #222222;
 $sub-text: #707070;
@@ -28,8 +29,8 @@ $thin: 100;
 $thick: 800;
 $nomal: 500;
 
-$tablet: 800px; 
-$phone: 500px; 
+$tablet: 800px;
+$phone: 500px;
 
 $column-width: 42rem;
 $column-margin_top: 4rem;
@@ -47,11 +48,7 @@ body::before {
 	top: 0;
 	left: 10vw;
 	z-index: -1;
-	background: radial-gradient(
-		50% 50% at 50% 50%,
-		white 0%,
-		rgba(255, 255, 255, 0) 100%
-	);
+	background: radial-gradient(50% 50% at 50% 50%, white 0%, rgba(255, 255, 255, 0) 100%);
 	opacity: 0.05;
 }
 
@@ -106,7 +103,7 @@ pre > code {
 	font-family: $font_mono;
 }
 
-code { 
+code {
 	font-weight: 500;
 	color: black;
 	font-family: $font_mono;

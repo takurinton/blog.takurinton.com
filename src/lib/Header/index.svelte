@@ -3,8 +3,12 @@
 </script>
 
 <div class="header">
-		<p class="title" class:active={$page.path === '/'}><a sveltekit:prefetch href="/">blog.takurinton.com</a></p>
-		<p class="page" class:active={$page.path === '/about'}><a sveltekit:prefetch href="/about">About</a></p>
+	<p class="title" class:active={$page.path === '/'}>
+		<a sveltekit:prefetch href="/">blog.takurinton.com</a>
+	</p>
+	<p class="page" class:active={$page.path === '/about'}>
+		<a sveltekit:prefetch href="/about">About</a>
+	</p>
 </div>
 
 <style lang="scss">
@@ -13,11 +17,10 @@
 	$theme_line: #a8a8a8;
 	$sub-text: #707070;
 
-	$button_color: #FF69B4;
+	$button_color: #ff69b4;
 
-	$primary: #FF69B4;
+	$primary: #ff69b4;
 	$theme_back: #7fd5ea41;
-
 
 	$h1: 4rem;
 	$h2: 3.2rem;
@@ -30,19 +33,19 @@
 	$thick: 800;
 	$nomal: 500;
 
-	$tablet: 800px; 
-	$phone: 500px; 
+	$tablet: 800px;
+	$phone: 500px;
 
 	.header {
-    padding: 0 20% 10px;
-    position: relative;
-    vertical-align: middle;
-    background: white;
+		padding: 0 20% 10px;
+		position: relative;
+		vertical-align: middle;
+		background: white;
 	}
 
 	.title {
 		padding-left: 20px;
-		float: left; 
+		float: left;
 		a {
 			color: $main-text;
 			text-decoration: none;
@@ -69,28 +72,29 @@
 		}
 	}
 
-	.title > li, .page > li {
+	.title > li,
+	.page > li {
 		list-style: none;
 	}
 
 	@media (max-width: 800px) {
-	.header {
-		height: 100%;
-	}
+		.header {
+			height: 100%;
+		}
 
-	.title, 
-	.page {
-		float: none;
-		text-align: center;
-	}
+		.title,
+		.page {
+			float: none;
+			text-align: center;
+		}
 
-	.title {
-		padding-left: 0;
-	}
+		.title {
+			padding-left: 0;
+		}
 
-	.page {
-		margin-top: 10px;
-		padding-right: 0;
+		.page {
+			margin-top: 10px;
+			padding-right: 0;
+		}
 	}
-}
 </style>

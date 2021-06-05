@@ -1,23 +1,23 @@
 <script context="module" lang="ts">
 	import { enhance } from '$lib/form';
-    import type { Load } from '@sveltejs/kit';
-    import marked from 'marked';
-    import { syntaxHighlight, markdownStyle } from './utils.ts';
-    
-    export const prerender = true;
+	import type { Load } from '@sveltejs/kit';
+	import marked from 'marked';
+	import { syntaxHighlight, markdownStyle } from './utils.ts';
 
-    // getInitialProps 的なノリのやつ
-    // page はページとかクエリパラメータとかを取得できる
-    // 引数の fetch は node-fetch 的なやつ、鯖でも走るけど node-fetch 要らず
-    // session や context なども持つことができる、hooks.ts でここら辺も設定できる
+	export const prerender = true;
+
+	// getInitialProps 的なノリのやつ
+	// page はページとかクエリパラメータとかを取得できる
+	// 引数の fetch は node-fetch 的なやつ、鯖でも走るけど node-fetch 要らず
+	// session や context なども持つことができる、hooks.ts でここら辺も設定できる
 	export const load: Load = async ({ page, fetch }) => {
-        const id: string = page.params.id;
+		const id: string = page.params.id;
 		const res = await fetch(`https://api.takurinton.com/blog/v1/post/${id}`);
 		if (res.ok) {
-            const post = await res.json();
-            syntaxHighlight()
-            const r: marked.Renderer = markdownStyle();
-            post.contents = marked(post.contents, { renderer: r });
+			const post = await res.json();
+			syntaxHighlight();
+			const r: marked.Renderer = markdownStyle();
+			post.contents = marked(post.contents, { renderer: r });
 			return {
 				props: { post }
 			};
@@ -28,142 +28,156 @@
 		return {
 			error: new Error(message)
 		};
-    };
+	};
 </script>
 
 <script lang="ts">
 	import { scale } from 'svelte/transition';
-    import { flip } from 'svelte/animate';
-    
+	import { flip } from 'svelte/animate';
+
 	type Post = {
-		id: number,
-		title: string, 
-		category: string,
-		contents: string, 
-		contents_image_url: string,
-		pub_date: string,
-		comment: CommentProps[]
-    }
-    
-    export let post: Post;
+		id: number;
+		title: string;
+		category: string;
+		contents: string;
+		contents_image_url: string;
+		pub_date: string;
+		comment: CommentProps[];
+	};
+
+	export let post: Post;
 </script>
 
 <svelte:head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/atom-one-dark-reasonable.min.css">
-    <title>{ post.title } | たくりんとんのブログ</title>
-    <meta property="og:url" content="https://blog.takurinton.com/post/{post.id}" />
-    <meta property="og:title" content="{post.title} | たくりんとんのブログ" /> 
-    <meta property="og:description" content="たくりんとんのブログです" /> 
-    <meta property="og:image" content="https://res.cloudinary.com/dtapptgdd/image/upload/w_1000/l_text:Sawarabi Gothic_70_bold:{post.title}/v1620370500/Screen_Shot_2021-05-07_at_15.54.47_extlvu.png" />
-    <meta name="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://blog.takurinton.com/post/{post.id}/" />
-    <meta property="twitter:title" content="{post.title} | たくりんとんのブログ" /> 
-    <meta property="twitter:description" content="たくりんとんのブログです" /> 
-    <meta property="twitter:image" content="https://res.cloudinary.com/dtapptgdd/image/upload/w_1000/l_text:Sawarabi Gothic_70_bold:{post.title}/v1620370500/Screen_Shot_2021-05-07_at_15.54.47_extlvu.png" />
+	<link
+		rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/atom-one-dark-reasonable.min.css"
+	/>
+	<title>{post.title} | たくりんとんのブログ</title>
+	<meta property="og:url" content="https://blog.takurinton.com/post/{post.id}" />
+	<meta property="og:title" content="{post.title} | たくりんとんのブログ" />
+	<meta property="og:description" content="たくりんとんのブログです" />
+	<meta
+		property="og:image"
+		content="https://res.cloudinary.com/dtapptgdd/image/upload/w_1000/l_text:Sawarabi Gothic_70_bold:{post.title}/v1620370500/Screen_Shot_2021-05-07_at_15.54.47_extlvu.png"
+	/>
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta property="twitter:url" content="https://blog.takurinton.com/post/{post.id}/" />
+	<meta property="twitter:title" content="{post.title} | たくりんとんのブログ" />
+	<meta property="twitter:description" content="たくりんとんのブログです" />
+	<meta
+		property="twitter:image"
+		content="https://res.cloudinary.com/dtapptgdd/image/upload/w_1000/l_text:Sawarabi Gothic_70_bold:{post.title}/v1620370500/Screen_Shot_2021-05-07_at_15.54.47_extlvu.png"
+	/>
 </svelte:head>
 
 <section>
-    <h1 class="title">{ post.title }</h1>
-    <div class="main">{ @html post.contents }</div>
+	<h1 class="title">{post.title}</h1>
+	<div class="main">{@html post.contents}</div>
 </section>
 
 <style lang="scss">
-    @import '../../app.scss';
+	@import '../../app.scss';
 
-    .title {
-        text-align: center;
-        font-size: $h3;
-        font-weight: 800;
-    }
+	.title {
+		text-align: center;
+		font-size: $h3;
+		font-weight: 800;
+	}
 
-    .main {
-        margin: 3% auto 5%;
-        text-align: left;
+	.main {
+		margin: 3% auto 5%;
+		text-align: left;
 
-        h1 {
-            margin: 4% 0 1% 1%; 
-            border-bottom: solid 2px $primary; 
-            width: 100%
-        }
-        h2 {
-            border-bottom: solid 1.6px $primary; 
-        }
-        h2, .h3, .h4, .h5, .h6 {
-            margin: 10px 0 2px 2%;
-        }
-        p {
-            line-height: 2.4; 
-            margin-left: 4%;
-            font-weight: 600;
-        }
-        
-        a {
-            text-decoration: none;
-            color: $primary;
-        }
-        
-        
-        ul {
-            line-height: 2;
-            margin-left: 2%;
-            margin-bottom: 1%;
-            font-weight: 600;
-        }
+		h1 {
+			margin: 4% 0 1% 1%;
+			border-bottom: solid 2px $primary;
+			width: 100%;
+		}
+		h2 {
+			border-bottom: solid 1.6px $primary;
+		}
+		h2,
+		.h3,
+		.h4,
+		.h5,
+		.h6 {
+			margin: 10px 0 2px 2%;
+		}
+		p {
+			line-height: 2.4;
+			margin-left: 4%;
+			font-weight: 600;
+		}
 
-        img {
-            max-width: 80vw;
-        }
+		a {
+			text-decoration: none;
+			color: $primary;
+		}
 
-        table {
-            margin-left: 4%;
-            width: auto;
-        }
-        
-        table td {
-            word-break : break-all;
-        }
-        
-        .content-img { 
-            margin: 30px 0 30px 4%;  
-        }
-        
-        pre {
-            padding: 10px;
-            margin: 10px 0 10px 4%;
-            overflow: auto;
-            background-color: #2c2d3a;
-            border-radius: 5px;
-        }
-        pre > code {
-            font-weight: 500;
-            color: white;
-            font-family:"SFMono-Regular","Consolas","Liberation Mono","Menlo",monospace,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-        }
+		ul {
+			line-height: 2;
+			margin-left: 2%;
+			margin-bottom: 1%;
+			font-weight: 600;
+		}
 
-        code {
-            font-weight: 500;
-            color: black;
-            font-family:"SFMono-Regular","Consolas","Liberation Mono","Menlo",monospace,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-        }
-        
-        @media (max-width: 1024px) {
-            width: 90%;
-        }
+		img {
+			max-width: 80vw;
+		}
 
-        @media screen and (max-width: 500px) {
-            .h1 {
-                font-size: 1.6rem
-            }
-            .h2 {
-                font-size: 1.3rem
-            }
-            img { 
-                width: 80%;
-            }
+		table {
+			margin-left: 4%;
+			width: auto;
+		}
 
-            ul {
-                margin-left: 3%;
-            }
-        }
-    }
+		table td {
+			word-break: break-all;
+		}
+
+		.content-img {
+			margin: 30px 0 30px 4%;
+		}
+
+		pre {
+			padding: 10px;
+			margin: 10px 0 10px 4%;
+			overflow: auto;
+			background-color: #2c2d3a;
+			border-radius: 5px;
+		}
+		pre > code {
+			font-weight: 500;
+			color: white;
+			font-family: 'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo', monospace,
+				'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+		}
+
+		code {
+			font-weight: 500;
+			color: black;
+			font-family: 'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo', monospace,
+				'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+		}
+
+		@media (max-width: 1024px) {
+			width: 90%;
+		}
+
+		@media screen and (max-width: 500px) {
+			.h1 {
+				font-size: 1.6rem;
+			}
+			.h2 {
+				font-size: 1.3rem;
+			}
+			img {
+				width: 80%;
+			}
+
+			ul {
+				margin-left: 3%;
+			}
+		}
+	}
 </style>

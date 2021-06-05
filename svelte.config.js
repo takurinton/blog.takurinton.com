@@ -6,7 +6,7 @@ const config = {
 	preprocess: preprocess({ scss: true }),
 
 	kit: {
-		target: '#svelte', 
+		target: '#svelte',
 		adapter: vercel()
 	}
 };

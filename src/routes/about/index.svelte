@@ -10,14 +10,14 @@
 <svelte:head>
 	<title>About</title>
 	<meta property="og:url" content="https://blog.takurinton.com/" />
-    <meta property="og:title" content="About | たくりんとんのブログ" /> 
-    <meta property="og:description" content="たくりんとんのブログです" /> 
-    <meta property="og:image" content="https://www.takurinton.com/me.jpeg" />
-    <meta name="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://blog.takurinton.com/" />
-    <meta property="twitter:title" content="About | たくりんとんのブログ" /> 
-    <meta property="twitter:description" content="たくりんとんのブログです" /> 
-    <meta property="twitter:image" content="https://www.takurinton.com/me.jpeg" />
+	<meta property="og:title" content="About | たくりんとんのブログ" />
+	<meta property="og:description" content="たくりんとんのブログです" />
+	<meta property="og:image" content="https://www.takurinton.com/me.jpeg" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta property="twitter:url" content="https://blog.takurinton.com/" />
+	<meta property="twitter:title" content="About | たくりんとんのブログ" />
+	<meta property="twitter:description" content="たくりんとんのブログです" />
+	<meta property="twitter:image" content="https://www.takurinton.com/me.jpeg" />
 </svelte:head>
 
 <div class="content">
@@ -26,7 +26,7 @@
 
 <style lang="scss">
 	@import '../../app.scss';
-	
+
 	.content {
 		width: 100%;
 		max-width: $column_width;
