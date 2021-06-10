@@ -97,7 +97,7 @@
 		h2 {
 			border-bottom: solid 1.6px $primary;
 		}
-		h2,
+		.h2,
 		.h3,
 		.h4,
 		.h5,
