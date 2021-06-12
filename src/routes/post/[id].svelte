@@ -4,6 +4,9 @@
 	import marked from 'marked';
 	import { syntaxHighlight, markdownStyle } from './utils.ts';
 
+	import { ApolloClient, InMemoryCache } from '@apollo/client/core/core.cjs.js';
+	import { POST_QUERY } from '../graphql/query';
+
 	export const prerender = true;
 
 	// getInitialProps 的なノリのやつ
@@ -12,22 +15,23 @@
 	// session や context なども持つことができる、hooks.ts でここら辺も設定できる
 	export const load: Load = async ({ page, fetch }) => {
 		const id: number = page.params.id;
-		const res = await fetch(`/graphql/post?id=${id}`);
-		if (res.ok) {
-			const _post = await res.json();
-			const post = _post.data.getPost;
-			syntaxHighlight();
-			const r: marked.Renderer = markdownStyle();
-			post.contents = marked(post.contents, { renderer: r });
-			return {
-				props: { post }
-			};
-		}
+		// const res = await fetch(`/graphql/post?id=${id}`);
+		const client = new ApolloClient({
+			uri: 'https://api.takurinton.com/graphql',
+			cache: new InMemoryCache()
+		});
+		
+		const res = await client.query({
+			query: POST_QUERY, 
+			variables: { id }
+		})
 
-		const { message } = await res.json();
-
+		let post = res.data.getPost;
+		syntaxHighlight();
+		const r: marked.Renderer = markdownStyle();
+		post.contents = marked(post.contents, { renderer: r });
 		return {
-			error: new Error('internal server error')
+			props: { post }
 		};
 	};
 </script>

@@ -1,6 +1,8 @@
 <script context="module" lang="ts">
 	import { enhance } from '$lib/form';
 	import type { Load } from '@sveltejs/kit';
+	import { ApolloClient, InMemoryCache } from '@apollo/client/core/core.cjs.js';
+	import { POSTS_QUERY } from './graphql/query';
 
 	export const prerender = true;
 
@@ -13,18 +15,20 @@
 		else if (pages === '' && category !== '') params = `?&category=${category}`;
 		else if (pages !== '' && category === '') params = `?page=${pages}`;
 
-		const res = await fetch(`/graphql/posts${params}`);
+		// const res = await fetch(`/graphql/posts${params}`);
+		const client = new ApolloClient({
+			uri: 'https://api.takurinton.com/graphql',
+			cache: new InMemoryCache()
+		});
+		
+		const res = await client.query({
+			query: POSTS_QUERY, 
+			variables: { pages, category }
+		})
 
-		if (res.ok) {
-			const _posts = await res.json();
-			const posts = _posts.data.getPosts;
-			return {
-				props: { posts }
-			};
-		}
-
+		const posts = res.data.getPosts;
 		return {
-			error: new Error('INTERNAL SERVER ERROR!!!')
+			props: { posts }
 		};
 	};
 </script>
