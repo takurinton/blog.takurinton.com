@@ -4,7 +4,7 @@ import { POST_QUERY } from '../query';
 export const get = async (req) => {
   const id = req.query.get('id');
   const client = new ApolloClient({
-      uri: 'http://localhost:8080/graphql',
+      uri: 'https://api.takurinton.com/graphql',
       cache: new InMemoryCache()
   });
   

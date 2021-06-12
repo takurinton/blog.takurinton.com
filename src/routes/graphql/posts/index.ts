@@ -7,7 +7,7 @@ export const get = async (req) => {
   const page = req.query.get('page') ?? 1;
 
   const client = new ApolloClient({
-      uri: 'http://localhost:8080/graphql',
+      uri: 'https://api.takurinton.com/graphql',
       cache: new InMemoryCache()
   });
   
