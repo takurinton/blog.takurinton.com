@@ -5,7 +5,7 @@
 	import { syntaxHighlight, markdownStyle } from './utils.ts';
 
 	import { ApolloClient, InMemoryCache } from '@apollo/client/core/core.cjs.js';
-	import { POST_QUERY } from '../graphql/query';
+	import { POST_QUERY } from '../../lib/graphql/query';
 
 	export const prerender = true;
 

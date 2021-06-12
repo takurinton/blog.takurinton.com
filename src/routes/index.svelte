@@ -2,7 +2,7 @@
 	import { enhance } from '$lib/form';
 	import type { Load } from '@sveltejs/kit';
 	import { ApolloClient, InMemoryCache } from '@apollo/client/core/core.cjs.js';
-	import { POSTS_QUERY } from './graphql/query';
+	import { POSTS_QUERY } from '../lib/graphql/query';
 
 	export const prerender = true;
 
