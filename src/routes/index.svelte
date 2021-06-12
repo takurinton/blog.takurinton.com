@@ -13,19 +13,18 @@
 		else if (pages === '' && category !== '') params = `?&category=${category}`;
 		else if (pages !== '' && category === '') params = `?page=${pages}`;
 
-		const res = await fetch(`https://api.takurinton.com/blog/v1/${params}`);
+		const res = await fetch(`/graphql/posts${params}`);
 
 		if (res.ok) {
-			const posts = await res.json();
+			const _posts = await res.json();
+			const posts = _posts.data.getPosts;
 			return {
 				props: { posts }
 			};
 		}
 
-		const { message } = await res.json();
-
 		return {
-			error: new Error(message)
+			error: new Error('INTERNAL SERVER ERROR!!!')
 		};
 	};
 </script>
@@ -35,26 +34,20 @@
 	import { flip } from 'svelte/animate';
 
 	type Posts = {
-		next: string | null;
-		previous: string | null;
-		total: number;
-		category: any;
-		current: number;
-		results: Post[];
-		page_size: string;
-		first: string;
-		last: string;
-	};
+        current: number;
+        next: number;
+        previous: number;
+        category: string;
+        results: Post[];
+    }
 
 	type Post = {
-		id: number;
-		title: string;
-		category: string;
-		contents: string;
-		contents_image_url: string;
-		pub_date: string;
-		comment: CommentProps[];
-	};
+        __typename: string;
+        id: number;
+        title: string;
+        contents: string;
+        pub_date: Date;
+    }
 
 	export let posts: Posts;
 </script>
@@ -75,7 +68,7 @@
 <section>
 	<h1>たくりんとんのブログ</h1>
 
-	{#if posts.category !== null}
+	{#if posts.category !== ''}
 		<h2>{posts.category} の記事一覧</h2>
 	{/if}
 
@@ -97,18 +90,18 @@
 	{/each}
 
 	<div class="pagination">
-		{#if posts.category !== null}
-			{#if posts.next !== null}
+		{#if posts.category !== ''}
+			{#if posts.next !== posts.current}
 				<a class="next-button" href="/?page={posts.next}&category={posts.category}">むかし</a>
 			{/if}
-			{#if posts.previous !== null}
+			{#if posts.previous !== posts.current}
 				<a class="prev-button" href="/?page={posts.previous}&category={posts.category}">さいきん</a>
 			{/if}
 		{:else}
-			{#if posts.next !== null}
+			{#if posts.next !== posts.current}
 				<a class="next-button" href="/?page={posts.next}">むかし</a>
 			{/if}
-			{#if posts.previous !== null}
+			{#if posts.previous !== posts.current}
 				<a class="prev-button" href="/?page={posts.previous}">さいきん</a>
 			{/if}
 		{/if}

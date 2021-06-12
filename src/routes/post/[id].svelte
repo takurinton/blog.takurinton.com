@@ -11,10 +11,11 @@
 	// 引数の fetch は node-fetch 的なやつ、鯖でも走るけど node-fetch 要らず
 	// session や context なども持つことができる、hooks.ts でここら辺も設定できる
 	export const load: Load = async ({ page, fetch }) => {
-		const id: string = page.params.id;
-		const res = await fetch(`https://api.takurinton.com/blog/v1/post/${id}`);
+		const id: number = page.params.id;
+		const res = await fetch(`/graphql/post?id=${id}`);
 		if (res.ok) {
-			const post = await res.json();
+			const _post = await res.json();
+			const post = _post.data.getPost;
 			syntaxHighlight();
 			const r: marked.Renderer = markdownStyle();
 			post.contents = marked(post.contents, { renderer: r });
@@ -26,7 +27,7 @@
 		const { message } = await res.json();
 
 		return {
-			error: new Error(message)
+			error: new Error('internal server error')
 		};
 	};
 </script>
@@ -36,13 +37,11 @@
 	import { flip } from 'svelte/animate';
 
 	type Post = {
+		__typename: string; 
 		id: number;
 		title: string;
-		category: string;
 		contents: string;
-		contents_image_url: string;
 		pub_date: string;
-		comment: CommentProps[];
 	};
 
 	export let post: Post;
