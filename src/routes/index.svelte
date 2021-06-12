@@ -8,14 +8,8 @@
 
 	export const load: Load = async ({ page, fetch }) => {
 		const category = page.query.get('category') ?? '';
-		const pages = page.query.get('page') ?? '';
-		let params = '';
+		const pages = page.query.get('page') ?? 1;
 
-		if (pages !== '' && category !== '') params = `?page=${pages}&category=${category}`;
-		else if (pages === '' && category !== '') params = `?&category=${category}`;
-		else if (pages !== '' && category === '') params = `?page=${pages}`;
-
-		// const res = await fetch(`/graphql/posts${params}`);
 		const client = new ApolloClient({
 			uri: 'https://api.takurinton.com/graphql',
 			cache: new InMemoryCache()

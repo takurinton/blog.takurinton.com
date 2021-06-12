@@ -2,6 +2,7 @@
 	"name": "blog.takurinton.com",
 	"version": "0.0.1",
 	"scripts": {
+		"start": "npm run build && npm run preview",
 		"dev": "svelte-kit dev",
 		"build": "svelte-kit build",
 		"preview": "svelte-kit preview",
