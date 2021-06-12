@@ -1,7 +1,6 @@
 <script context="module" lang="ts">
 	import { enhance } from '$lib/form';
 	import type { Load } from '@sveltejs/kit';
-	import { query } from "svelte-apollo";
 	import marked from 'marked';
 	import { syntaxHighlight, markdownStyle } from './utils.ts';
 

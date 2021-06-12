@@ -50,7 +50,6 @@
     }
 
 	export let posts: Posts;
-	console.log(posts.previous, posts.current, posts.next)
 </script>
 
 <svelte:head>
