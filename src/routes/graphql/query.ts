@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client/core';
+import { gql } from '@apollo/client/core/core.cjs.js';
 
 export const POST_QUERY = gql`
 query postQuery($id: Int){

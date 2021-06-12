@@ -1,4 +1,4 @@
-import { ApolloClient, InMemoryCache } from '@apollo/client/core';
+import { ApolloClient, InMemoryCache } from '@apollo/client/core/core.cjs.js';
 import { POST_QUERY } from '../query';
 
 export const get = async (req) => {
