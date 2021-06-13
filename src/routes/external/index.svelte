@@ -36,7 +36,7 @@
 </script>
 
 <svelte:head>
-	<title>About</title>
+	<title>External airticle</title>
 	<meta property="og:url" content="https://blog.takurinton.com/external/" />
 	<meta property="og:title" content="外部記事 | たくりんとんのブログ" />
 	<meta property="og:description" content="外部のサービスに投稿した記事一覧です" />
