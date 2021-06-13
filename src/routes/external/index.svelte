@@ -50,6 +50,17 @@
 
 <div class="content">
 	<h1>外部に投稿した記事一覧</h1>
+	{#each rss.zenn as post}
+		<div class="box">
+			<div class="content">
+				<a href="{post.url}">
+					<h1><img src="https://simpleicons.org/icons/zenn.svg" /> {post.title}</h1>
+				</a>
+				<p>{post.content}</p>
+			</div>
+			<hr />
+		</div>
+	{/each}
 </div>
 
 <style lang="scss">
@@ -62,6 +73,22 @@
 
 		h1 {
 			text-align: center;
+		}
+
+		img {
+			height: 28px;
+			width: 28px;
+		}
+	}
+
+	.box {
+		h1 {
+			font-size: $h3;
+			color: $main-text;
+			margin-bottom: 0;
+			&:hover {
+				color: $primary;
+			}
 		}
 	}
 </style>

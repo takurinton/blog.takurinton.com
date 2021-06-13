@@ -5,6 +5,7 @@ export type jsonType = {
     [key: string]: {
         title: string;
         url: string;
+        content: string;
         date: string;
     }[];
 };
@@ -23,9 +24,9 @@ const parseRss = async () => {
             return {
                 title: i.title,
                 url: i.link,
+                content: i.content,
                 date: i.pubDate
             }
-                
         });
         
         json[media] = items;
