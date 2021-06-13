@@ -50,7 +50,6 @@
 
 <div class="content">
 	<h1>外部に投稿した記事一覧</h1>
-	{JSON.stringify(rss)}
 </div>
 
 <style lang="scss">

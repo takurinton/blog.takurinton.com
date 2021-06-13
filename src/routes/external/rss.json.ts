@@ -18,7 +18,6 @@ const rssLinks = {
 const parseRss = async () => {
     let json: jsonType = {};
     for (const [media, link] of Object.entries(rssLinks)) {
-        console.log(media, link)
         const feed = await parser.parseURL(link);
         const items = feed.items.map((i) => {
             return {
