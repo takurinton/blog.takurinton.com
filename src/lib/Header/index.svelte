@@ -7,7 +7,7 @@
 		<a sveltekit:prefetch href="/">blog.takurinton.com</a>
 	</p>
 	<p class="page" class:active={$page.path === '/about'}>
-		<a sveltekit:prefetch href="/about">About</a>
+		<a sveltekit:prefetch href="/external">External</a>
 	</p>
 </div>
 
@@ -59,7 +59,7 @@
 
 	.page {
 		float: right;
-		line-height: 30px;
+		line-height: 43px;
 		padding-right: 20px;
 		a {
 			color: $main-text;
