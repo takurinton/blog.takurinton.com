@@ -76,6 +76,7 @@
 
 <section>
 	<h1 class="title">{post.title}</h1>
+	<p class="pub-date">{post.pub_date.slice(0, 10)}</p>
 	<div class="main">{@html post.contents}</div>
 </section>
 
@@ -86,6 +87,11 @@
 		text-align: center;
 		font-size: $h3;
 		font-weight: 800;
+	}
+
+	.pub-date {
+		font-size: $p;
+		text-align: right;
 	}
 
 	.main {

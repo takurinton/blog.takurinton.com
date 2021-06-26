@@ -12,7 +12,16 @@
 
 		const client = new ApolloClient({
 			uri: 'https://api.takurinton.com/graphql',
-			cache: new InMemoryCache()
+			cache: new InMemoryCache({
+				typePolicies: {
+					getPosts: {
+						keyFields: []
+					}, 
+					getPost: {
+						keyFields: ['id', ]
+					}
+				}
+			})
 		});
 		
 		const res = await client.query({
