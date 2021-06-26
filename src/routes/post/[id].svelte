@@ -62,7 +62,7 @@
 	<meta property="og:description" content="たくりんとんのブログです" />
 	<meta
 		property="og:image"
-		content="https://res.cloudinary.com/dtapptgdd/image/upload/w_1000/l_text:Sawarabi Gothic_70_bold:{post.title}/v1620370500/Screen_Shot_2021-05-07_at_15.54.47_extlvu.png"
+		content="https://res.cloudinary.com/dtapptgdd/image/upload/w_1000/l_text:Sawarabi Gothic_70_bold:{post.title}/v1624689828/blog.takurinton.com_r14tz5.png"
 	/>
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta property="twitter:url" content="https://blog.takurinton.com/post/{post.id}/" />
@@ -70,7 +70,7 @@
 	<meta property="twitter:description" content="たくりんとんのブログです" />
 	<meta
 		property="twitter:image"
-		content="https://res.cloudinary.com/dtapptgdd/image/upload/w_1000/l_text:Sawarabi Gothic_70_bold:{post.title}/v1620370500/Screen_Shot_2021-05-07_at_15.54.47_extlvu.png"
+		content="https://res.cloudinary.com/dtapptgdd/image/upload/w_1000/l_text:Sawarabi Gothic_70_bold:{post.title}/v1624689828/blog.takurinton.com_r14tz5.png"
 	/>
 </svelte:head>
 
