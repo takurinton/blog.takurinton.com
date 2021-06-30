@@ -1,7 +1,8 @@
 <script context="module" lang="ts">
 	import { enhance } from '$lib/form';
 	import type { Load } from '@sveltejs/kit';
-	import { ApolloClient, InMemoryCache } from '@apollo/client/core/core.cjs.js';
+	// import { ApolloClient, InMemoryCache } from '@apollo/client/core/core.cjs.js';
+	import { client } from '../lib/graphql/client';
 	import { POSTS_QUERY } from '../lib/graphql/query';
 
 	export const prerender = true;
@@ -10,19 +11,19 @@
 		const category = page.query.get('category') ?? '';
 		const pages = page.query.get('page') ?? 1;
 
-		const client = new ApolloClient({
-			uri: 'https://api.takurinton.com/graphql',
-			cache: new InMemoryCache({
-				typePolicies: {
-					getPosts: {
-						keyFields: []
-					}, 
-					getPost: {
-						keyFields: ['id', ]
-					}
-				}
-			})
-		});
+		// const client = new ApolloClient({
+		// 	uri: 'https://api.takurinton.com/graphql',
+		// 	cache: new InMemoryCache({
+		// 		typePolicies: {
+		// 			getPosts: {
+		// 				keyFields: []
+		// 			}, 
+		// 			getPost: {
+		// 				keyFields: ['id', ]
+		// 			}
+		// 		}
+		// 	})
+		// });
 		
 		const res = await client.query({
 			query: POSTS_QUERY, 

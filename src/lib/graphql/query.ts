@@ -12,7 +12,7 @@ query postQuery($id: Int){
 `
 
 export const POSTS_QUERY = gql`
-query postQuery($pages: Int, $category: String){
+query postsQuery($pages: Int, $category: String){
   getPosts (page: $pages, category: $category){
     current
     next

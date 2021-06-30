@@ -4,7 +4,8 @@
 	import marked from 'marked';
 	import { syntaxHighlight, markdownStyle } from './utils.ts';
 
-	import { ApolloClient, InMemoryCache } from '@apollo/client/core/core.cjs.js';
+	// import { ApolloClient, InMemoryCache } from '@apollo/client/core/core.cjs.js';
+	import { client } from '../../lib/graphql/client';
 	import { POST_QUERY } from '../../lib/graphql/query';
 
 	export const prerender = true;
@@ -16,10 +17,10 @@
 	export const load: Load = async ({ page, fetch }) => {
 		const id: number = page.params.id;
 		// const res = await fetch(`/graphql/post?id=${id}`);
-		const client = new ApolloClient({
-			uri: 'https://api.takurinton.com/graphql',
-			cache: new InMemoryCache()
-		});
+		// const client = new ApolloClient({
+		// 	uri: 'https://api.takurinton.com/graphql',
+		// 	cache: new InMemoryCache()
+		// });
 		
 		const res = await client.query({
 			query: POST_QUERY, 
