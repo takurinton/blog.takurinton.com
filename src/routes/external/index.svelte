@@ -23,9 +23,6 @@
 </script>
 
 <script lang="ts">
-	import { scale } from 'svelte/transition';
-	import { flip } from 'svelte/animate';
-
 	type rssType = {
 	  title: string;
 	  url: string;
