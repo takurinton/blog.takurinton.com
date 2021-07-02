@@ -1,27 +1,15 @@
 <script context="module" lang="ts">
-	import { enhance } from '$lib/form';
 	import type { Load } from '@sveltejs/kit';
 	import marked from 'marked';
-	import { syntaxHighlight, markdownStyle } from './utils.ts';
+	import { syntaxHighlight, markdownStyle } from './utils';
 
-	// import { ApolloClient, InMemoryCache } from '@apollo/client/core/core.cjs.js';
 	import { client } from '../../lib/graphql/client';
 	import { POST_QUERY } from '../../lib/graphql/query';
 
 	export const prerender = true;
 
-	// getInitialProps 的なノリのやつ
-	// page はページとかクエリパラメータとかを取得できる
-	// 引数の fetch は node-fetch 的なやつ、鯖でも走るけど node-fetch 要らず
-	// session や context なども持つことができる、hooks.ts でここら辺も設定できる
 	export const load: Load = async ({ page, fetch }) => {
-		const id: number = page.params.id;
-		// const res = await fetch(`/graphql/post?id=${id}`);
-		// const client = new ApolloClient({
-		// 	uri: 'https://api.takurinton.com/graphql',
-		// 	cache: new InMemoryCache()
-		// });
-		
+		const id: number = Number(page.params.id);
 		const res = await client.query({
 			query: POST_QUERY, 
 			variables: { id }
@@ -30,17 +18,13 @@
 		let post = res.data.getPost;
 		syntaxHighlight();
 		const r: marked.Renderer = markdownStyle();
-		post.contents = marked(post.contents, { renderer: r });
 		return {
-			props: { post }
+			props: { post: { ...post, contents: marked(post.contents, { renderer: r }) } }
 		};
 	};
 </script>
 
 <script lang="ts">
-	import { scale } from 'svelte/transition';
-	import { flip } from 'svelte/animate';
-
 	type Post = {
 		__typename: string; 
 		id: number;
