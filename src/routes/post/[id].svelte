@@ -67,7 +67,7 @@
 <section>
 	<h1 class="title">{post.title}</h1>
 	<p class="pub-date">{post.pub_date.slice(0, 10)}</p>
-	<div class="main">{@html post.contents}</div>
+	<div class="contents">{@html post.contents}</div>
 </section>
 
 <style lang="scss">
@@ -84,81 +84,11 @@
 		text-align: right;
 	}
 
-	.main {
+	.contents {
 		margin: 3% auto 5%;
 		text-align: left;
-
-		h1 {
-			margin: 4% 0 1% 1%;
-			border-bottom: solid 2px $primary;
-			width: 100%;
-		}
-		h2 {
-			border-bottom: solid 1.6px $primary;
-		}
-		.h2,
-		.h3,
-		.h4,
-		.h5,
-		.h6 {
-			margin: 10px 0 2px 2%;
-		}
-		p {
-			line-height: 2.4;
-			margin-left: 4%;
-			font-weight: 600;
-		}
-
-		a {
-			text-decoration: none;
-			color: $primary;
-		}
-
-		ul {
-			line-height: 2;
-			margin-left: 2%;
-			margin-bottom: 1%;
-			font-weight: 600;
-		}
-
-		img {
-			max-width: 80vw;
-		}
-
-		table {
-			margin-left: 4%;
-			width: auto;
-		}
-
-		table td {
-			word-break: break-all;
-		}
-
-		.content-img {
-			margin: 30px 0 30px 4%;
-		}
-
-		pre {
-			padding: 10px;
-			margin: 10px 0 10px 4%;
-			overflow: auto;
-			background-color: #2c2d3a;
-			border-radius: 5px;
-		}
-		pre > code {
-			font-weight: 500;
-			color: white;
-			font-family: 'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo', monospace,
-				'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-		}
-
-		code {
-			font-weight: 500;
-			color: black;
-			font-family: 'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo', monospace,
-				'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-		}
-
+		width: 80%;
+		
 		@media (max-width: 1024px) {
 			width: 90%;
 		}
