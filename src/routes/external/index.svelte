@@ -84,7 +84,7 @@
 	.box {
 		h1 {
 			font-size: $h3;
-			color: $main-text;
+			color: $heading;
 			margin-bottom: 0;
 			&:hover {
 				color: $primary;

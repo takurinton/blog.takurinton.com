@@ -82,15 +82,19 @@
 	.pub-date {
 		font-size: $p;
 		text-align: right;
+		margin-right: 10%;
 	}
 
 	.contents {
 		margin: 3% auto 5%;
 		text-align: left;
 		width: 80%;
-		
+
 		@media (max-width: 1024px) {
 			width: 90%;
+			.pub-date {
+				margin-right: 5%;
+			}
 		}
 
 		@media screen and (max-width: 500px) {

@@ -118,7 +118,6 @@
 
 		h1 {
 			font-size: $h3;
-			color: $main-text;
 			margin-bottom: 0;
 			&:hover {
 				color: $primary;
