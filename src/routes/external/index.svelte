@@ -7,7 +7,7 @@
 	export const router = browser;
 	export const prerender = true;
 
-	export const load: Load = async ({ page, fetch }) => {
+	export const load: Load = async ({ fetch }) => {
 		const res = await fetch('/external/rss.json');
 		if (res.ok) {
 			const rss = await res.json();
@@ -23,16 +23,16 @@
 </script>
 
 <script lang="ts">
-	import { scale } from 'svelte/transition';
-	import { flip } from 'svelte/animate';
-
 	type rssType = {
-	  title: string;
-	  url: string;
-	  date: string;
+		[key: string]: {
+			title: string;
+			url: string;
+			content: string;
+			date: string;
+    	}[];
 	};
 
-	export let rss: rssType[];
+	export let rss: rssType;
 </script>
 
 <svelte:head>
@@ -54,7 +54,7 @@
 		<div class="box">
 			<div class="content">
 				<a href="{post.url}">
-					<h1><img src="https://simpleicons.org/icons/zenn.svg" /> {post.title}</h1>
+					<h1><img src="https://simpleicons.org/icons/zenn.svg" alt={post.title}/> {post.title}</h1>
 				</a>
 				<p>{post.content}</p>
 			</div>
@@ -84,7 +84,7 @@
 	.box {
 		h1 {
 			font-size: $h3;
-			color: $main-text;
+			color: $heading;
 			margin-bottom: 0;
 			&:hover {
 				color: $primary;

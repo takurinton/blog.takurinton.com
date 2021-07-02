@@ -1,27 +1,15 @@
 <script context="module" lang="ts">
-	import { enhance } from '$lib/form';
 	import type { Load } from '@sveltejs/kit';
 	import marked from 'marked';
-	import { syntaxHighlight, markdownStyle } from './utils.ts';
+	import { syntaxHighlight, markdownStyle } from './utils';
 
-	// import { ApolloClient, InMemoryCache } from '@apollo/client/core/core.cjs.js';
 	import { client } from '../../lib/graphql/client';
 	import { POST_QUERY } from '../../lib/graphql/query';
 
 	export const prerender = true;
 
-	// getInitialProps 的なノリのやつ
-	// page はページとかクエリパラメータとかを取得できる
-	// 引数の fetch は node-fetch 的なやつ、鯖でも走るけど node-fetch 要らず
-	// session や context なども持つことができる、hooks.ts でここら辺も設定できる
-	export const load: Load = async ({ page, fetch }) => {
-		const id: number = page.params.id;
-		// const res = await fetch(`/graphql/post?id=${id}`);
-		// const client = new ApolloClient({
-		// 	uri: 'https://api.takurinton.com/graphql',
-		// 	cache: new InMemoryCache()
-		// });
-		
+	export const load: Load = async ({ page }) => {
+		const id: number = Number(page.params.id);
 		const res = await client.query({
 			query: POST_QUERY, 
 			variables: { id }
@@ -30,17 +18,18 @@
 		let post = res.data.getPost;
 		syntaxHighlight();
 		const r: marked.Renderer = markdownStyle();
-		post.contents = marked(post.contents, { renderer: r });
 		return {
-			props: { post }
+		  props: { 
+			post: { 
+			  ...post, 
+			  contents: marked(post.contents, { renderer: r }) 
+			}
+		  }
 		};
 	};
 </script>
 
 <script lang="ts">
-	import { scale } from 'svelte/transition';
-	import { flip } from 'svelte/animate';
-
 	type Post = {
 		__typename: string; 
 		id: number;
@@ -78,7 +67,7 @@
 <section>
 	<h1 class="title">{post.title}</h1>
 	<p class="pub-date">{post.pub_date.slice(0, 10)}</p>
-	<div class="main">{@html post.contents}</div>
+	<div class="contents">{@html post.contents}</div>
 </section>
 
 <style lang="scss">
@@ -93,85 +82,19 @@
 	.pub-date {
 		font-size: $p;
 		text-align: right;
+		margin-right: 10%;
 	}
 
-	.main {
+	.contents {
 		margin: 3% auto 5%;
 		text-align: left;
-
-		h1 {
-			margin: 4% 0 1% 1%;
-			border-bottom: solid 2px $primary;
-			width: 100%;
-		}
-		h2 {
-			border-bottom: solid 1.6px $primary;
-		}
-		.h2,
-		.h3,
-		.h4,
-		.h5,
-		.h6 {
-			margin: 10px 0 2px 2%;
-		}
-		p {
-			line-height: 2.4;
-			margin-left: 4%;
-			font-weight: 600;
-		}
-
-		a {
-			text-decoration: none;
-			color: $primary;
-		}
-
-		ul {
-			line-height: 2;
-			margin-left: 2%;
-			margin-bottom: 1%;
-			font-weight: 600;
-		}
-
-		img {
-			max-width: 80vw;
-		}
-
-		table {
-			margin-left: 4%;
-			width: auto;
-		}
-
-		table td {
-			word-break: break-all;
-		}
-
-		.content-img {
-			margin: 30px 0 30px 4%;
-		}
-
-		pre {
-			padding: 10px;
-			margin: 10px 0 10px 4%;
-			overflow: auto;
-			background-color: #2c2d3a;
-			border-radius: 5px;
-		}
-		pre > code {
-			font-weight: 500;
-			color: white;
-			font-family: 'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo', monospace,
-				'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-		}
-
-		code {
-			font-weight: 500;
-			color: black;
-			font-family: 'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo', monospace,
-				'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-		}
+		width: 80%;
 
 		@media (max-width: 1024px) {
 			width: 90%;
+			.pub-date {
+				margin-right: 5%;
+			}
 		}
 
 		@media screen and (max-width: 500px) {

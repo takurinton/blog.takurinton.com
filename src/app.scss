@@ -61,12 +61,13 @@ body::before {
 h1,
 h2,
 p {
-	font-weight: 500;
 	color: $heading;
 }
 
 p {
-	line-height: 1.5;
+	line-height: 1.8;
+	font-size: 1.2rem;
+	font-weight: 500;	
 }
 
 a {
@@ -80,12 +81,15 @@ a:hover {
 
 h1 {
 	font-size: 2rem;
+	margin-top: 30px;
 	margin-bottom: 0 0 1em 0;
 	text-align: left;
+	font-weight: 800;
 }
 
 h2 {
 	font-size: 1.6rem;
+	font-weight: 600;
 }
 
 pre {
@@ -121,4 +125,8 @@ button:focus:not(:focus-visible) {
 
 li {
 	margin: 10px 0;
+}
+
+img {
+	width: 80%;
 }
