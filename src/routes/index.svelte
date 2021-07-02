@@ -5,7 +5,7 @@
 
 	export const prerender = true;
 
-	export const load: Load = async ({ page, fetch }) => {
+	export const load: Load = async ({ page }) => {
 		const category = page.query.get('category') ?? '';
 		const pages = page.query.get('page') ?? 1;
 
@@ -36,7 +36,7 @@
         title: string;
         contents: string;
 		category: string;
-        pub_date: Date;
+        pub_date: string;
     }
 
 	export let posts: Posts;

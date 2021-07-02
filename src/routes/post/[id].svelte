@@ -8,7 +8,7 @@
 
 	export const prerender = true;
 
-	export const load: Load = async ({ page, fetch }) => {
+	export const load: Load = async ({ page }) => {
 		const id: number = Number(page.params.id);
 		const res = await client.query({
 			query: POST_QUERY, 
@@ -19,7 +19,12 @@
 		syntaxHighlight();
 		const r: marked.Renderer = markdownStyle();
 		return {
-			props: { post: { ...post, contents: marked(post.contents, { renderer: r }) } }
+		  props: { 
+			post: { 
+			  ...post, 
+			  contents: marked(post.contents, { renderer: r }) 
+			}
+		  }
 		};
 	};
 </script>
