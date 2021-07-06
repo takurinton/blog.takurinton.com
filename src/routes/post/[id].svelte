@@ -2,6 +2,7 @@
 	import type { Load } from '@sveltejs/kit';
 	import marked from 'marked';
 	import { syntaxHighlight, markdownStyle } from './utils';
+	import { datetimeFormatter } from '../../lib/datetimeFormatter/datetimeFormatter';
 
 	import { client } from '../../lib/graphql/client';
 	import { POST_QUERY } from '../../lib/graphql/query';
@@ -35,6 +36,7 @@
 		id: number;
 		title: string;
 		contents: string;
+		category: string;
 		pub_date: string;
 	};
 
@@ -66,7 +68,12 @@
 
 <section>
 	<h1 class="title">{post.title}</h1>
-	<p class="pub-date">{post.pub_date.slice(0, 10)}</p>
+	<div style="text-align: right">
+		<a class="category detail-p" href="/?category={post.category}">{post.category}</a>
+	</div>
+	<div class="pub-date">
+		<p class="detail-p pub-date-p">{datetimeFormatter(post.pub_date)}</p>
+	</div>
 	<div class="contents">{@html post.contents}</div>
 </section>
 
@@ -79,10 +86,28 @@
 		font-weight: 800;
 	}
 
-	.pub-date {
+	.pub-date, .category {
 		font-size: $p;
 		text-align: right;
 		margin-right: 10%;
+	}
+
+	.pub-date-p {
+		margin-bottom: 0;
+	}
+
+	.category {
+		padding: 3px 8px 4px;
+		background: $sub-text;
+		color: white;
+		border-radius: 2px;
+		&:hover {
+			background: $primary;
+		}
+	}
+
+	.detail-p {
+		font-weight: 900;
 	}
 
 	.contents {

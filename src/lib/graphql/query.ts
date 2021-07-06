@@ -7,6 +7,7 @@ query postQuery($id: Int){
     title
     contents
     pub_date
+    category
   }
 }
 `

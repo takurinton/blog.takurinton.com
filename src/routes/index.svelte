@@ -2,6 +2,7 @@
 	import type { Load } from '@sveltejs/kit';
 	import { client } from '../lib/graphql/client';
 	import { POSTS_QUERY } from '../lib/graphql/query';
+	import { datetimeFormatter } from '../lib/datetimeFormatter/datetimeFormatter';
 
 	export const prerender = true;
 
@@ -71,7 +72,7 @@
 				<a class="category" href="/?category={post.category}">
 					{post.category}
 				</a>
-				<p class="pubDate">{post.pub_date.slice(0, 10)}</p>
+				<p class="pubDate">{datetimeFormatter(post.pub_date)}</p>
 				<p>{post.contents}</p>
 			</div>
 
@@ -156,7 +157,6 @@
 		}
 
 		.pubDate {
-			margin-top: 10px;
 			font-weight: $nomal;
 		}
 
