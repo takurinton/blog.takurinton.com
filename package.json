@@ -36,6 +36,7 @@
 		"highlight.js": "^10.7.2",
 		"marked": "^2.0.4",
 		"node-sass": "^6.0.0",
+		"open-graph-scraper": "^4.9.0",
 		"sass": "^1.34.0"
 	}
 }
