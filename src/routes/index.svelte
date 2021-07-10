@@ -1,60 +1,44 @@
 <script context="module" lang="ts">
-	import { enhance } from '$lib/form';
 	import type { Load } from '@sveltejs/kit';
+	import { client } from '../lib/graphql/client';
+	import { POSTS_QUERY } from '../lib/graphql/query';
+	import { datetimeFormatter } from '../lib/datetimeFormatter/datetimeFormatter';
 
 	export const prerender = true;
 
-	export const load: Load = async ({ page, fetch }) => {
+	export const load: Load = async ({ page }) => {
 		const category = page.query.get('category') ?? '';
-		const pages = page.query.get('page') ?? '';
-		let params = '';
+		const pages = page.query.get('page') ?? 1;
 
-		if (pages !== '' && category !== '') params = `?page=${pages}&category=${category}`;
-		else if (pages === '' && category !== '') params = `?&category=${category}`;
-		else if (pages !== '' && category === '') params = `?page=${pages}`;
+		const res = await client.query({
+			query: POSTS_QUERY, 
+			variables: { pages, category }
+		})
 
-		const res = await fetch(`https://api.takurinton.com/blog/v1/${params}`);
-
-		if (res.ok) {
-			const posts = await res.json();
-			return {
-				props: { posts }
-			};
-		}
-
-		const { message } = await res.json();
-
+		const posts = res.data.getPosts;
 		return {
-			error: new Error(message)
+			props: { posts }
 		};
 	};
 </script>
 
 <script lang="ts">
-	import { scale } from 'svelte/transition';
-	import { flip } from 'svelte/animate';
-
 	type Posts = {
-		next: string | null;
-		previous: string | null;
-		total: number;
-		category: any;
-		current: number;
-		results: Post[];
-		page_size: string;
-		first: string;
-		last: string;
-	};
+        current: number;
+        next: number;
+        previous: number;
+        category: string;
+        results: Post[];
+    }
 
 	type Post = {
-		id: number;
-		title: string;
+        __typename: string;
+        id: number;
+        title: string;
+        contents: string;
 		category: string;
-		contents: string;
-		contents_image_url: string;
-		pub_date: string;
-		comment: CommentProps[];
-	};
+        pub_date: string;
+    }
 
 	export let posts: Posts;
 </script>
@@ -75,7 +59,7 @@
 <section>
 	<h1>たくりんとんのブログ</h1>
 
-	{#if posts.category !== null}
+	{#if posts.category !== ''}
 		<h2>{posts.category} の記事一覧</h2>
 	{/if}
 
@@ -88,7 +72,7 @@
 				<a class="category" href="/?category={post.category}">
 					{post.category}
 				</a>
-				<p class="pubDate">{post.pub_date.slice(0, 10)}</p>
+				<p class="pubDate">{datetimeFormatter(post.pub_date)}</p>
 				<p>{post.contents}</p>
 			</div>
 
@@ -97,18 +81,18 @@
 	{/each}
 
 	<div class="pagination">
-		{#if posts.category !== null}
-			{#if posts.next !== null}
+		{#if posts.category !== ''}
+			{#if posts.next !== posts.current}
 				<a class="next-button" href="/?page={posts.next}&category={posts.category}">むかし</a>
 			{/if}
-			{#if posts.previous !== null}
+			{#if posts.previous !== posts.current}
 				<a class="prev-button" href="/?page={posts.previous}&category={posts.category}">さいきん</a>
 			{/if}
 		{:else}
-			{#if posts.next !== null}
+			{#if posts.next !== posts.current}
 				<a class="next-button" href="/?page={posts.next}">むかし</a>
 			{/if}
-			{#if posts.previous !== null}
+			{#if posts.previous !== posts.current}
 				<a class="prev-button" href="/?page={posts.previous}">さいきん</a>
 			{/if}
 		{/if}
@@ -135,7 +119,6 @@
 
 		h1 {
 			font-size: $h3;
-			color: $main-text;
 			margin-bottom: 0;
 			&:hover {
 				color: $primary;
@@ -174,7 +157,6 @@
 		}
 
 		.pubDate {
-			margin-top: 10px;
 			font-weight: $nomal;
 		}
 

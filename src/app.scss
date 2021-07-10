@@ -9,6 +9,7 @@ $font_mono: 'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo', monospace,
 	'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
 $primary: #ff69b4;
+$_primary: #ff69b49d;
 $secondary: #7fd5ea;
 $main-text: #222222;
 $sub-text: #707070;
@@ -61,12 +62,13 @@ body::before {
 h1,
 h2,
 p {
-	font-weight: 500;
 	color: $heading;
 }
 
 p {
-	line-height: 1.5;
+	line-height: 1.8;
+	font-size: 1.2rem;
+	font-weight: 500;	
 }
 
 a {
@@ -80,12 +82,15 @@ a:hover {
 
 h1 {
 	font-size: 2rem;
+	margin-top: 30px;
 	margin-bottom: 0 0 1em 0;
 	text-align: left;
+	font-weight: 800;
 }
 
 h2 {
-	font-size: 1.6rem;
+	font-size: 1.8rem;
+	font-weight: 600;
 }
 
 pre {
@@ -121,4 +126,23 @@ button:focus:not(:focus-visible) {
 
 li {
 	margin: 10px 0;
+}
+
+img {
+	width: 80%;
+}
+
+.h1 {
+	margin-top: 50px;
+	margin-bottom: 15px;
+	border-bottom: 2px solid $_primary;
+}
+
+.h2 {
+	margin-top: 30px;
+	margin-bottom: 0;
+}
+
+.p {
+	margin-top: 10px;
 }

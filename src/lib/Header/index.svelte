@@ -7,7 +7,7 @@
 		<a sveltekit:prefetch href="/">blog.takurinton.com</a>
 	</p>
 	<p class="page" class:active={$page.path === '/about'}>
-		<a sveltekit:prefetch href="/about">About</a>
+		<a sveltekit:prefetch href="/external">External</a>
 	</p>
 </div>
 
@@ -16,6 +16,7 @@
 	$main-text: #222222;
 	$theme_line: #a8a8a8;
 	$sub-text: #707070;
+	$heading: rgba(0, 0, 0, 0.7);
 
 	$button_color: #ff69b4;
 
@@ -47,7 +48,7 @@
 		padding-left: 20px;
 		float: left;
 		a {
-			color: $main-text;
+			color: $heading;
 			text-decoration: none;
 			font-size: $h4;
 			font-weight: $thick;
@@ -59,10 +60,10 @@
 
 	.page {
 		float: right;
-		line-height: 30px;
+		line-height: 43px;
 		padding-right: 20px;
 		a {
-			color: $main-text;
+			color: $heading;
 			text-decoration: none;
 			font-size: $h5;
 			font-weight: $thick;
