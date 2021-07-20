@@ -14,8 +14,8 @@
 			return {
 				props: { rss }
 			};
-		};
-		
+		}
+
 		return {
 			error: new Error('INTERNAL SERVER ERROR')
 		};
@@ -29,7 +29,7 @@
 			url: string;
 			content: string;
 			date: string;
-    	}[];
+		}[];
 	};
 
 	export let rss: rssType;
@@ -53,8 +53,11 @@
 	{#each rss.zenn as post}
 		<div class="box">
 			<div class="content">
-				<a href="{post.url}">
-					<h1><img src="https://simpleicons.org/icons/zenn.svg" alt={post.title}/> {post.title}</h1>
+				<a href={post.url}>
+					<h1>
+						<img src="https://simpleicons.org/icons/zenn.svg" alt={post.title} />
+						{post.title}
+					</h1>
 				</a>
 				<p>{post.content}</p>
 			</div>

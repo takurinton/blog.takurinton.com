@@ -11,9 +11,9 @@
 		const pages = page.query.get('page') ?? 1;
 
 		const res = await client.query({
-			query: POSTS_QUERY, 
+			query: POSTS_QUERY,
 			variables: { pages, category }
-		})
+		});
 
 		const posts = res.data.getPosts;
 		return {
@@ -24,21 +24,21 @@
 
 <script lang="ts">
 	type Posts = {
-        current: number;
-        next: number;
-        previous: number;
-        category: string;
-        results: Post[];
-    }
+		current: number;
+		next: number;
+		previous: number;
+		category: string;
+		results: Post[];
+	};
 
 	type Post = {
-        __typename: string;
-        id: number;
-        title: string;
-        contents: string;
+		__typename: string;
+		id: number;
+		title: string;
+		contents: string;
 		category: string;
-        pub_date: string;
-    }
+		pub_date: string;
+	};
 
 	export let posts: Posts;
 </script>

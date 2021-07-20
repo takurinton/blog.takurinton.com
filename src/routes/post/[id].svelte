@@ -12,27 +12,27 @@
 	export const load: Load = async ({ page }) => {
 		const id: number = Number(page.params.id);
 		const res = await client.query({
-			query: POST_QUERY, 
+			query: POST_QUERY,
 			variables: { id }
-		})
+		});
 
 		let post = res.data.getPost;
 		syntaxHighlight();
 		const r: marked.Renderer = markdownStyle();
 		return {
-		  props: { 
-			post: { 
-			  ...post, 
-			  contents: marked(post.contents, { renderer: r }) 
+			props: {
+				post: {
+					...post,
+					contents: marked(post.contents, { renderer: r })
+				}
 			}
-		  }
 		};
 	};
 </script>
 
 <script lang="ts">
 	type Post = {
-		__typename: string; 
+		__typename: string;
 		id: number;
 		title: string;
 		contents: string;
@@ -86,7 +86,8 @@
 		font-weight: 800;
 	}
 
-	.pub-date, .category {
+	.pub-date,
+	.category {
 		font-size: $p;
 		text-align: right;
 		margin-right: 10%;
